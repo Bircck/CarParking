@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/third_bar"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/vector_attempt_1"
+        app:tint="#000000" />
+
+    <ImageView
+        android:id="@+id/second_bar"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/vector_attempt_1"
+        app:tint="#000000" />
+    <ImageView
+        android:id="@+id/first_bar"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/vector_attempt_1"
+        app:tint="#000000" />
+
+    <ImageView
+        android:id="@+id/testing_image"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:rotation="180"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/a_car_transparent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/testing_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:layout_marginStart="78dp"
+            android:text="try me out"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/car_statistics_screen_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <Button
+            android:id="@+id/car_statistics_screen_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="statistics"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/testing_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</LinearLayout>

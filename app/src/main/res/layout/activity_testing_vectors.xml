@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:paddingTop="16dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imageView"
+                android:background="@drawable/vector_circle_attempt1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lort"
+                android:text="37%"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_alignTop="@id/imageView"
+                android:layout_alignBottom="@id/imageView"
+                android:layout_alignLeft="@id/imageView"
+                android:layout_alignRight="@id/imageView" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/kage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/vector_circle_attempt2" />
+
+        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+            android:id="@+id/circle_vector_1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:vector_src="@drawable/vector_circle_attempt2" />
+
+        <Button
+            android:id="@+id/change_battery_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+
+    </LinearLayout>
+</ScrollView>

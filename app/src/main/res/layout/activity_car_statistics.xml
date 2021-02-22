@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:paddingTop="16dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                android:id="@+id/circle_vector_1"
+                android:layout_width="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="150dp"
+                app:vector_src="@drawable/vector_circle_attempt2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lort"
+                android:text="37%"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_alignTop="@id/circle_vector_1"
+                android:layout_alignBottom="@id/circle_vector_1"
+                android:layout_alignLeft="@id/circle_vector_1"
+                android:layout_alignRight="@id/circle_vector_1" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/change_battery_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/information_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="You've driven: 152.532 km" />
+
+        <TextView
+            android:id="@+id/information_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="car is: 8.7 years old" />
+        <TextView
+            android:id="@+id/information_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="brake is: not pulled" />
+
+    </LinearLayout>
+
+</ScrollView>

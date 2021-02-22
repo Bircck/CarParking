@@ -1,0 +1,82 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200"
+    android:alpha="1">
+    <path
+        android:pathData="M75,200 C75,200 -100,100 100,10 C100,10  300,100 125,200"
+        android:strokeWidth="5"
+        android:strokeAlpha="1"
+        android:strokeColor="#000000"
+        android:strokeLineCap="round"
+        android:trimPathStart="0"
+        android:trimPathEnd="1" />
+    <path
+        android:id="@+id/puha"
+        android:pathData="M75,200 C75,200 -100,100 100,10 C100,10  300,100 125,200"
+        android:strokeWidth="7"
+        android:strokeAlpha="0"
+        android:strokeLineCap="round"
+        android:strokeColor="#00a115"
+        android:trimPathStart="0"
+        android:trimPathEnd="1" />
+    <path
+        android:id="@+id/tis"
+        android:pathData="M10,105 a90,90 0,10 10,180 0 a90,90 0,10 10,-180 0 z"
+        android:strokeWidth="7"
+        android:strokeAlpha="1"
+        android:strokeLineCap="round"
+        android:strokeColor="#00a115"
+        android:trimPathStart="0.1"
+        android:trimPathEnd="0.9" />
+    <group
+        android:translateX="100"
+        android:translateY="195"
+        android:rotation="270">
+        <path
+            android:pathData="
+            M0,0 a90,90 0,10 10,180 0 a90,90 0,10 10,-180 0 z
+            "
+            android:strokeWidth="7"
+            android:strokeAlpha="1"
+            android:strokeLineCap="round"
+            android:strokeColor="#f1f"
+            android:trimPathStart="0.1"
+            android:trimPathEnd="0.9" />
+    </group>
+
+    <path
+        android:pathData="
+        M8,13 L22,13 C22,22 12,22 12,22 C12,22 1,22 2,13Z
+        "
+        android:strokeWidth="3"
+        android:strokeAlpha="1"
+        android:strokeLineCap="round"
+        android:strokeColor="#f1f"
+        android:trimPathStart="0"
+        android:trimPathEnd="1" />
+
+
+</vector>
+
+<!--
+android:pathData="M42.262,0L0,38.653L74.489,151.994L148.977,38.653L106.723,0M46.568,11.11L21.554,33.998L99.007,33.998L99.007,11.11L46.568,11.11ZM110.125,18.174L110.125,33.998L127.416,33.998L110.125,18.174ZM80.048,45.116L80.048,123.296L131.426,45.116L80.048,45.116ZM17.551,45.116L33.976,70.101L68.93,70.101L68.93,45.116L17.551,45.116ZM41.284,81.219L68.93,123.296L68.93,81.219L41.284,81.219Z"
+android:pathData="M0,75 L0,50 C0,50 75,0 150,50 L150,75 C150,75 75,25 0,75"
+
+android:pathData="M75,200 C75,200 -100,100 100,10 C100,10  300,100 125,200"
+-->
+
+    <!--
+    M move to
+    L line to
+    C curve to
+    A arc to
+    Z close
+    -->
+
+    <!--
+        android:fillAlpha="1"
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        -->
