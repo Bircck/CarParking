@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
             <TextView
-                android:id="@+id/information_3"
+                android:id="@+id/information_brake_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -59,6 +59,26 @@
                 android:layout_gravity="center_horizontal"
                 android:text="" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/information_battery_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Hvor meget strøm er der på batteriet? "
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/information_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

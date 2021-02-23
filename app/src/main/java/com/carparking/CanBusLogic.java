@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -27,12 +28,11 @@ public class CanBusLogic {
     volatile String prev_data_read = "";
     volatile boolean stopReadWorker = false;
     volatile boolean stopWriteWorker = false;
-    volatile boolean showData = false;
 
     String id;
     TextView textView;
 
-    void startBT() throws Exception {
+    void startBT(Handler handler) throws Exception {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null)
         {
@@ -59,13 +59,12 @@ public class CanBusLogic {
         mmOutputStream = mmSocket.getOutputStream();
         mmInputStream = mmSocket.getInputStream();
 
-        beginListenForData();
+        beginListenForData(handler);
     }
 
     @SuppressLint("SetTextI18n")
-    void beginListenForData()
+    void beginListenForData(Handler handler)
     {
-        final Handler handler = new Handler();
         final byte delimiter = 13;
 
         readBufferPosition = 0;
@@ -95,14 +94,22 @@ public class CanBusLogic {
                                     prev_data_read = data;
 
                                     System.out.println(data);
-                                    if(showData) {
+                                    if(stopWriteWorker && this.id != null && data != null) {
                                         if (this.id.equals("346") && data.length() > 10) {
-                                            int brakeValue = Integer.parseInt(data.substring(8, 9));
-                                            if (brakeValue == 2) {
-                                                this.textView.setText("Ja");
-                                            } else {
-                                                this.textView.setText("Nej");
+                                            try{
+                                                int brakeValue = Integer.parseInt(data.substring(8, 9));
+                                                if (brakeValue == 2) {
+                                                    this.textView.setText("Ja");
+                                                } else {
+                                                    this.textView.setText("Nej");
+                                                }
+                                            } catch (Exception e){
+                                                System.out.println("Kunne ikke passes til int: " + data.substring(8, 9));
                                             }
+                                        }
+                                        if (this.id.equals("374") && data.length() > 10) {
+                                            int battery = Integer.parseInt(data.substring(2, 4), 16) - 110;
+                                            this.textView.setText(battery + "%");
                                         }
                                     }
                                 });
@@ -124,25 +131,19 @@ public class CanBusLogic {
         readThread.start();
     }
 
-    void listenCanBusData(String id, TextView textView) throws IOException {
-        this.id = id;
-        this.textView = textView;
+    void listenCanBusData() throws IOException {
+        this.stopWriteWorker = false;
         writeThread = new Thread(() -> {
             while(!Thread.currentThread().isInterrupted() && !stopWriteWorker)
             {
                 try {
                     this.sendData("atsp6");
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     this.sendData("ate0");
-                    Thread.sleep(2000);
-                    this.sendData("atcra " + id);
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     this.sendData("atcaf0");
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     this.sendData("atS0");
-                    Thread.sleep(2000);
-                    this.sendData("atma");
-                    this.showData = true;
                     stopWriteWorker = true;
                 }
                 catch(Exception e){
@@ -151,6 +152,35 @@ public class CanBusLogic {
             }
         });
         writeThread.start();
+    }
+
+    void switchCanBusData(String id, TextView textView) throws IOException {
+        this.id = id;
+        this.textView = textView;
+        this.stopWriteWorker = false;
+        if(writeThread != null) {
+            writeThread.interrupt();
+            writeThread = null;
+        }
+        writeThread = new Thread(() -> {
+            while(!Thread.currentThread().isInterrupted() && !stopWriteWorker)
+            {
+                try {
+                    this.sendData("atcra " + id);
+                    Thread.sleep(1000);
+                    this.sendData("atma");
+                    stopWriteWorker = true;
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        writeThread.start();
+    }
+
+    boolean isSwitchReady(){
+        return stopWriteWorker;
     }
 
     void sendData(String msg) throws IOException

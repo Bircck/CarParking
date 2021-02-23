@@ -3,6 +3,7 @@ package com.carparking;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,7 +39,8 @@ public class CarStatistics extends AppCompatActivity implements View.OnClickList
 
     Float battery = 0.65f;
 
-    TextView information_brake;
+    Thread canbusThread;
+    TextView information_brake, information_battery;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +49,7 @@ public class CarStatistics extends AppCompatActivity implements View.OnClickList
         heartVector = (VectorMasterView) findViewById(R.id.circle_vector_1);
 
         information_brake = findViewById(R.id.information_brake);
-
-        CanBusLogic canBusLogic = new CanBusLogic();
-        try {
-            canBusLogic.startBT();
-            canBusLogic.listenCanBusData("346", information_brake);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        information_battery = findViewById(R.id.information_battery);
 
         // find the correct path using name
         outline = heartVector.getPathModelByName("outline");
@@ -96,6 +91,40 @@ public class CarStatistics extends AppCompatActivity implements View.OnClickList
             }
         });
 
+
+        final Handler handler = new Handler();
+        canbusThread = new Thread(() -> {
+            CanBusLogic canBusLogic = new CanBusLogic();
+            try {
+                canBusLogic.startBT(handler);
+                canBusLogic.listenCanBusData();
+
+                int currentId = 0;
+                while(true){
+                    if(canBusLogic.isSwitchReady()){
+                        switch(currentId){
+                            case 0:
+                            case 346:
+                                canBusLogic.switchCanBusData("374", information_battery);
+                                currentId = 374;
+                                Thread.sleep(5000);
+                                break;
+                            case 374:
+                                canBusLogic.switchCanBusData("346", information_brake);
+                                currentId = 346;
+                                Thread.sleep(5000);
+                                break;
+                            case 999:
+                                return;
+                        }
+                    }
+                    Thread.sleep(3000);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        canbusThread.start();
     }
 
     public void onClick(View v) {
