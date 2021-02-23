@@ -1,15 +1,11 @@
-package com.example.carparking;
+package com.carparking;
 
 import android.animation.ValueAnimator;
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,11 +38,23 @@ public class CarStatistics extends AppCompatActivity implements View.OnClickList
 
     Float battery = 0.65f;
 
+    TextView information_brake;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_statistics);
 
         heartVector = (VectorMasterView) findViewById(R.id.circle_vector_1);
+
+        information_brake = findViewById(R.id.information_brake);
+
+        CanBusLogic canBusLogic = new CanBusLogic();
+        try {
+            canBusLogic.startBT();
+            canBusLogic.listenCanBusData("346", information_brake);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // find the correct path using name
         outline = heartVector.getPathModelByName("outline");
@@ -66,8 +74,6 @@ public class CarStatistics extends AppCompatActivity implements View.OnClickList
 
         //GradientDrawable gradientDrawable = new GradientDrawable(
         //GradientDrawable.Orientation.TOP_BOTTOM, colors);
-        change_battery_button = findViewById(R.id.change_battery_button);
-        change_battery_button.setOnClickListener(this);
 
         heartVector.setOnClickListener(new View.OnClickListener() {
             @Override
