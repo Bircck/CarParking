@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -49,10 +50,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int parked_active = 0;
     int reverse_active = 0;
 
+    MediaPlayer quackMediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //sound
+        quackMediaPlayer = MediaPlayer.create(this, R.raw.quack);
 
         //park/revers symbols
         parking_symbol = findViewById(R.id.parking_symbol);
@@ -82,9 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == distance_vector) {
             distanceVectorUpdater();
+            quackMediaPlayer.setLooping(true);
+            quackMediaPlayer.start();
         }
         if (v == parking_symbol){
             updateRevParkSymbols(v);
+            quackMediaPlayer.pause();
         }
         if (v == reverse_symbol){
             updateRevParkSymbols(v);
