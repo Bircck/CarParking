@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CarParking</string>
+    <string name="car_statistics_screen_button_description">car_statistics_screen_button_description</string>
+    <string name="parking_symbol_description">parking symbol</string>
+    <string name="reverse_symbol_description">reverse symbol</string>
+    <string name="car_image_description">car image</string>
 </resources>

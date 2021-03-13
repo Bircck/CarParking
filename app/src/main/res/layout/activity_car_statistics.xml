@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700">
+    android:background="@color/mainBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,11 +15,10 @@
         android:padding="24dp"
         android:paddingTop="16dp">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            >
+            android:layout_gravity="center_horizontal">
 
             <com.sdsmdg.harjot.vectormaster.VectorMasterView
                 android:id="@+id/circle_vector_1"
@@ -30,6 +29,7 @@
 
             <TextView
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
                 android:layout_height="match_parent"
                 android:id="@+id/lort"
                 android:text="37%"
@@ -37,8 +37,8 @@
                 android:textSize="24sp"
                 android:layout_alignTop="@id/circle_vector_1"
                 android:layout_alignBottom="@id/circle_vector_1"
-                android:layout_alignLeft="@id/circle_vector_1"
-                android:layout_alignRight="@id/circle_vector_1" />
+                android:layout_alignStart="@id/circle_vector_1"
+                android:layout_alignEnd="@id/circle_vector_1" />
         </RelativeLayout>
 
         <LinearLayout
@@ -51,13 +51,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Er håndbremsen trukket? "
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/information_brake"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/white" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -67,6 +70,7 @@
             <TextView
                 android:id="@+id/information_battery_text"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Hvor meget strøm er der på batteriet? "
@@ -74,6 +78,7 @@
             <TextView
                 android:id="@+id/information_battery"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="" />

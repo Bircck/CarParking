@@ -1,79 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="carparking.MainActivity"
-    android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/mainBackground">
 
-    <ImageView
-        android:id="@+id/third_bar"
-        android:layout_width="250dp"
-        android:layout_height="125dp"
-        android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/vector_attempt_1"
-        app:tint="#000000" />
-
-    <ImageView
-        android:id="@+id/second_bar"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/vector_attempt_1"
-        app:tint="#000000" />
-    <ImageView
-        android:id="@+id/first_bar"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/vector_attempt_1"
-        app:tint="#000000" />
-
-    <ImageView
-        android:id="@+id/testing_image"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:rotation="180"
-        android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/a_car_transparent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/car_statistics_screen_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/testing_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:layout_marginStart="78dp"
-            android:text="try me out"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/car_statistics_screen_button"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
+        android:layout_margin="16dp"
+        android:contentDescription="@string/car_statistics_screen_button_description"
 
-        <Button
-            android:id="@+id/car_statistics_screen_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:text="statistics"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/testing_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:fabCustomSize="48dp"
+        app:maxImageSize="24dp"
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:src="@drawable/ic_baseline_assignment_24"
 
+        android:tint="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
 
+    <ImageView
+        android:id="@+id/parking_symbol"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/p_incircle_v2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/parking_symbol_description" />
 
+    <ImageView
+        android:id="@+id/reverse_symbol"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/reverse_symbol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/reverse_symbol_description" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/testing_image_car"
+            android:layout_width="150dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/car_grey_simple"
+            android:contentDescription="@string/car_image_description" />
+
+        <!--  android:rotation=""-->
+
+        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+            android:id="@+id/distance_vector"
+            android:rotation="180"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            app:vector_src="@drawable/vector_bigone_2"
+            android:layout_below="@id/testing_image_car"/>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
