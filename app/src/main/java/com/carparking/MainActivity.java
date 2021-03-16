@@ -52,10 +52,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     MediaPlayer quackMediaPlayer;
 
+    final Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try {
+            CanBusLogic.startBT(handler);
+            CanBusLogic.initCanBusData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //sound
         quackMediaPlayer = MediaPlayer.create(this, R.raw.quack);

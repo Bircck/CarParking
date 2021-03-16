@@ -21,7 +21,7 @@
             android:layout_gravity="center_horizontal">
 
             <com.sdsmdg.harjot.vectormaster.VectorMasterView
-                android:id="@+id/circle_vector_1"
+                android:id="@+id/vectorBattery"
                 android:layout_width="150dp"
                 android:layout_centerHorizontal="true"
                 android:layout_height="150dp"
@@ -31,14 +31,14 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="match_parent"
-                android:id="@+id/lort"
-                android:text="37%"
+                android:id="@+id/information_battery"
+                android:text="0%"
                 android:gravity="center"
                 android:textSize="24sp"
-                android:layout_alignTop="@id/circle_vector_1"
-                android:layout_alignBottom="@id/circle_vector_1"
-                android:layout_alignStart="@id/circle_vector_1"
-                android:layout_alignEnd="@id/circle_vector_1" />
+                android:layout_alignTop="@id/vectorBattery"
+                android:layout_alignBottom="@id/vectorBattery"
+                android:layout_alignStart="@id/vectorBattery"
+                android:layout_alignEnd="@id/vectorBattery" />
         </RelativeLayout>
 
         <LinearLayout
@@ -61,27 +61,6 @@
                 android:text=""
                 android:textColor="@color/white" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <TextView
-                android:id="@+id/information_battery_text"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Hvor meget strøm er der på batteriet? "
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:id="@+id/information_battery"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="" />
         </LinearLayout>
 
     </LinearLayout>

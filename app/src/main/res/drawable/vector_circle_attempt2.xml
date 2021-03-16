@@ -17,7 +17,7 @@
             android:strokeWidth="5"
             android:strokeAlpha="1"
             android:strokeLineCap="round"
-            android:strokeColor="@color/black"
+            android:strokeColor="@color/white"
             android:trimPathStart="0.1"
             android:trimPathEnd="0.9" />
 
@@ -29,9 +29,9 @@
             android:strokeWidth="10"
             android:strokeAlpha="1"
             android:strokeLineCap="round"
-            android:strokeColor="#00a115"
+            android:strokeColor="@color/red_600"
             android:trimPathStart="0.1"
-            android:trimPathEnd="0.3" />
+            android:trimPathEnd="0.1" />
     </group>
 
 
