@@ -88,12 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == distance_vector) {
             distanceVectorUpdater();
-            quackMediaPlayer.setLooping(true);
-            quackMediaPlayer.start();
+//            quackMediaPlayer.setLooping(true);
+//            quackMediaPlayer.start();
         }
         if (v == parking_symbol){
             updateRevParkSymbols(v);
-            quackMediaPlayer.pause();
+            //quackMediaPlayer.pause();
         }
         if (v == reverse_symbol){
             updateRevParkSymbols(v);

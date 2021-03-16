@@ -98,28 +98,29 @@ public class CarStatistics extends AppCompatActivity implements View.OnClickList
             try {
                 canBusLogic.startBT(handler);
                 canBusLogic.listenCanBusData();
+                canBusLogic.switchCanBusData(346, information_brake);
 
                 int currentId = 0;
-                while(true){
-                    if(canBusLogic.isSwitchReady()){
-                        switch(currentId){
-                            case 0:
-                            case 346:
-                                canBusLogic.switchCanBusData("374", information_battery);
-                                currentId = 374;
-                                Thread.sleep(5000);
-                                break;
-                            case 374:
-                                canBusLogic.switchCanBusData("346", information_brake);
-                                currentId = 346;
-                                Thread.sleep(5000);
-                                break;
-                            case 999:
-                                return;
-                        }
-                    }
-                    Thread.sleep(3000);
-                }
+//                while(true){
+//                    if(canBusLogic.isSwitchReady()){
+//                        switch(currentId){
+//                            case 0:
+//                            case 346:
+//                                canBusLogic.switchCanBusData("374", information_battery);
+//                                currentId = 374;
+//                                Thread.sleep(5000);
+//                                break;
+//                            case 374:
+//                                canBusLogic.switchCanBusData("346", information_brake);
+//                                currentId = 346;
+//                                Thread.sleep(5000);
+//                                break;
+//                            case 999:
+//                                return;
+//                        }
+//                    }
+//                    Thread.sleep(3000);
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

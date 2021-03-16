@@ -29,7 +29,7 @@ public class CanBusLogic {
     volatile boolean stopReadWorker = false;
     volatile boolean stopWriteWorker = false;
 
-    String id;
+    int id = 0;
     TextView textView;
 
     void startBT(Handler handler) throws Exception {
@@ -86,29 +86,35 @@ public class CanBusLogic {
                             {
                                 byte[] encodedBytes = new byte[readBufferPosition];
                                 System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
-                                final String data = new String(encodedBytes, StandardCharsets.US_ASCII);
+                                String data = new String(encodedBytes, StandardCharsets.US_ASCII);
+                                int colon = data.indexOf(":");
+                                if(colon != -1){
+                                    data = data.substring(colon+1);
+                                }
+                                data = data.replaceAll(" ", "");
                                 readBufferPosition = 0;
 
+                                final String finalData = data;
                                 handler.post(() -> {
-                                    if(data.equals(prev_data_read)) return;
-                                    prev_data_read = data;
+                                    if(finalData.equals(prev_data_read)) return;
+                                    prev_data_read = finalData;
 
-                                    System.out.println(data);
-                                    if(stopWriteWorker && this.id != null && data != null) {
-                                        if (this.id.equals("346") && data.length() > 10) {
+                                    System.out.println(finalData);
+                                    if(stopWriteWorker) {
+                                        if (this.id == 346 && finalData.length() > 10) {
                                             try{
-                                                int brakeValue = Integer.parseInt(data.substring(8, 9));
+                                                int brakeValue = Integer.parseInt(finalData.substring(5, 7), 16);
                                                 if (brakeValue == 2) {
                                                     this.textView.setText("Ja");
                                                 } else {
                                                     this.textView.setText("Nej");
                                                 }
                                             } catch (Exception e){
-                                                System.out.println("Kunne ikke passes til int: " + data.substring(8, 9));
+                                                System.out.println("Kunne ikke passes til int: " + finalData.substring(8, 9));
                                             }
                                         }
-                                        if (this.id.equals("374") && data.length() > 10) {
-                                            int battery = Integer.parseInt(data.substring(2, 4), 16) - 110;
+                                        if (this.id == 374 && finalData.length() > 10) {
+                                            int battery = Integer.parseInt(finalData.substring(2, 4), 16) - 110;
                                             this.textView.setText(battery + "%");
                                         }
                                     }
@@ -154,7 +160,7 @@ public class CanBusLogic {
         writeThread.start();
     }
 
-    void switchCanBusData(String id, TextView textView) throws IOException {
+    void switchCanBusData(int id, TextView textView) throws IOException {
         this.id = id;
         this.textView = textView;
         this.stopWriteWorker = false;
@@ -163,13 +169,13 @@ public class CanBusLogic {
             writeThread = null;
         }
         writeThread = new Thread(() -> {
-            while(!Thread.currentThread().isInterrupted() && !stopWriteWorker)
+            while(!Thread.currentThread().isInterrupted() && !this.stopWriteWorker)
             {
                 try {
                     this.sendData("atcra " + id);
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     this.sendData("atma");
-                    stopWriteWorker = true;
+                    this.stopWriteWorker = true;
                 }
                 catch(Exception e){
                     e.printStackTrace();
