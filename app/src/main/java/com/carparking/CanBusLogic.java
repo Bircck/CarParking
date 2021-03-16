@@ -182,7 +182,7 @@ public class CanBusLogic {
             {
                 try {
                     CanBusLogic.sendData("atcra " + id);
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     CanBusLogic.sendData("atma");
                     CanBusLogic.stopWriteWorker = true;
                 }
