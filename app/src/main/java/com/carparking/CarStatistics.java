@@ -16,7 +16,7 @@ import com.sdsmdg.harjot.vectormaster.models.PathModel;
 public class CarStatistics extends AppCompatActivity{
     Thread canbusThread;
     VectorMasterView vector;
-    TextView information_brake, information_battery;
+    TextView information_battery, information_brake, information_gear;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,31 +29,42 @@ public class CarStatistics extends AppCompatActivity{
         outline.setStrokeColor(Color.GREEN);
         vector.update();
 
-        information_brake = findViewById(R.id.information_brake);
         information_battery = findViewById(R.id.information_battery);
+        information_brake = findViewById(R.id.information_brake);
+        information_gear = findViewById(R.id.information_gear);
+
+        CanBusLogic.addTextview("battery", information_battery);
+        CanBusLogic.addTextview("brake", information_brake);
+        CanBusLogic.addTextview("gear", information_gear);
+        CanBusLogic.vector = vector;
 
         canbusThread = new Thread(() -> {
             try {
-                int currentId = 374;
-                CanBusLogic.switchCanBusData(currentId, information_battery, vector);
+                int currentId = 418;
+                CanBusLogic.switchCanBusData(currentId);
                 while(true){
                     if(CanBusLogic.isSwitchReady()){
                         switch(currentId){
                             case 346:
                                 currentId = 374;
-                                CanBusLogic.switchCanBusData(currentId, information_battery, vector);
-                                Thread.sleep(10000);
+                                CanBusLogic.switchCanBusData(currentId);
+                                Thread.sleep(200);
+                                break;
+                            case 418:
+                                currentId = 346;
+                                CanBusLogic.switchCanBusData(currentId);
+                                Thread.sleep(200);
                                 break;
                             case 374:
-                                currentId = 346;
-                                CanBusLogic.switchCanBusData(currentId, information_brake, vector);
-                                Thread.sleep(10000);
+                                currentId = 418;
+                                CanBusLogic.switchCanBusData(currentId);
+                                Thread.sleep(200);
                                 break;
                             case 999:
                                 return;
                         }
                     }
-                    Thread.sleep(3000);
+                    Thread.sleep(100);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
