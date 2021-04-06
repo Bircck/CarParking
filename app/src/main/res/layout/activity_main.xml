@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/mainBackground">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/car_statistics_screen_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/car_statistics_screen_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
 
-        android:layout_margin="16dp"
-        android:contentDescription="@string/car_statistics_screen_button_description"
+<!--        android:layout_margin="16dp"-->
+<!--        android:contentDescription="@string/car_statistics_screen_button_description"-->
 
-        app:fabCustomSize="48dp"
-        app:maxImageSize="24dp"
+<!--        app:fabCustomSize="48dp"-->
+<!--        app:maxImageSize="24dp"-->
 
-        android:src="@drawable/ic_baseline_assignment_24"
+<!--        android:src="@drawable/ic_baseline_assignment_24"-->
 
-        android:tint="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-         />
+<!--        android:tint="@android:color/white"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--         />-->
 
     <ImageView
         android:id="@+id/parking_symbol"
@@ -52,7 +52,7 @@
         <ImageView
             android:id="@+id/testing_image_car"
             android:layout_width="150dp"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             app:srcCompat="@drawable/car_grey_simple"
@@ -63,10 +63,92 @@
         <com.sdsmdg.harjot.vectormaster.VectorMasterView
             android:id="@+id/distance_vector"
             android:rotation="180"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             app:vector_src="@drawable/vector_bigone_2"
             android:layout_below="@id/testing_image_car"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/distance_vector"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:paddingTop="16dp"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal">
+
+                <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                    android:id="@+id/vectorBattery"
+                    android:layout_width="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="150dp"
+                    app:vector_src="@drawable/vector_circle_attempt2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:layout_height="match_parent"
+                    android:id="@+id/information_battery"
+                    android:text="0%"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:layout_alignTop="@id/vectorBattery"
+                    android:layout_alignBottom="@id/vectorBattery"
+                    android:layout_alignStart="@id/vectorBattery"
+                    android:layout_alignEnd="@id/vectorBattery" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/information_brake_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Er håndbremsen trukket? "
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/information_brake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text=""
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/information_gear_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Hvad står gearet i? "
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/information_gear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text=""
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,6 +34,7 @@ public class CanBusLogic {
     private static volatile String prev_data_read = "";
     private static volatile boolean stopReadWorker = false;
     private static volatile boolean stopWriteWorker = false;
+    private static volatile boolean readyToSwitch = true;
 
     public static VectorMasterView vector;
 
@@ -153,6 +154,7 @@ public class CanBusLogic {
                                                     break;
                                             }
                                         }
+                                        readyToSwitch = true;
                                     }
                                     prev_data_read = finalData;
                                 });
@@ -215,8 +217,12 @@ public class CanBusLogic {
         }
     }
 
-    static boolean isSwitchReady(){
-        return stopWriteWorker;
+    static void setReadyToSwitch(boolean readyToSwitch){
+        CanBusLogic.readyToSwitch = readyToSwitch;
+    }
+
+    static boolean isReadyToSwitch(){
+        return stopWriteWorker && readyToSwitch;
     }
 
     static void sendData(String msg) throws IOException
