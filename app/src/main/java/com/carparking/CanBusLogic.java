@@ -130,7 +130,8 @@ public class CanBusLogic {
                                             CanBusLogic.textViews.get("brake").setText(brakeValue == 2 ? "Ja" : "Nej");
                                         }
                                         if (finalData.length() > 10 && type == 374) {
-                                            int battery = Integer.parseInt(finalData.substring(5, 7), 16) - 110;
+                                            int battery = Integer.parseInt(finalData.substring(5, 7), 16);
+                                            battery = Math.round((((float)battery)/210)*100);
                                             CanBusLogic.textViews.get("battery").setText(battery + "%");
                                             float trimPathEnd = (((battery*0.8f)/100)+0.1f);
                                             PathModel outline = vector.getPathModelByName("outline");
