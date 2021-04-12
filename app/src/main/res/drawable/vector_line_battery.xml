@@ -5,33 +5,35 @@
     android:viewportHeight="200"
     android:alpha="1">
 
-    <group
-        android:translateX="100"
-        android:translateY="195"
-        android:rotation="270">
+    <group>
         <path
             android:name="innerline"
             android:pathData="
-            M0,0 a90,90 0,10 10,180 0 a90,90 0,10 10,-180 0 z
+            M0,100 L200,100
             "
             android:strokeWidth="5"
             android:strokeAlpha="1"
             android:strokeLineCap="round"
             android:trimPathStart="0.1"
-            android:trimPathEnd="0.9" />
+            android:trimPathEnd="0.9"
+
+            android:strokeColor="#FFFFFF"
+            />
 
         <path
             android:name="outline"
             android:pathData="
-            M0,0 a90,90 0,10 10,180 0 a90,90 0,10 10,-180 0 z
+            M0,100 L200,100
             "
-            android:strokeWidth="10"
+            android:strokeWidth="7"
             android:strokeAlpha="1"
             android:strokeLineCap="round"
             android:trimPathStart="0.1"
-            android:trimPathEnd="0.1"
+            android:trimPathEnd="0.2"
             android:fillAlpha="1"
-            android:fillColor="#FFFFFF"
+            android:fillColor="#AAAAAA"
+
+            android:strokeColor="#FF0000"
             />
     </group>
 

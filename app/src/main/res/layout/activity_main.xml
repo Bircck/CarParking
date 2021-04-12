@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/parking_symbol_description" />
 
+    <!--
     <ImageView
         android:id="@+id/reverse_symbol"
         android:layout_width="40dp"
@@ -45,6 +46,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/reverse_symbol_description" />
+    -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gear_container"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:srcCompat="@drawable/reverse_symbol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/reverse_symbol_description"
+        android:background="@drawable/border"
+        >
+
+        <TextView
+            android:id="@+id/gear_currentgear_text"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            android:text="R"
+            android:textSize="32sp"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/gear_geartext"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gear_currentgear_text"
+            android:textColor="@color/white"
+            android:text="gear"
+            android:textSize="12sp"
+            android:gravity="center"
+            >
+        </TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

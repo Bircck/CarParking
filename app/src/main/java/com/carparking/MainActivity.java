@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //park/revers symbols
         parking_symbol = findViewById(R.id.parking_symbol);
         parking_symbol.setOnClickListener(this);
-        reverse_symbol = findViewById(R.id.reverse_symbol);
-        reverse_symbol.setOnClickListener(this);
+        //reverse_symbol = findViewById(R.id.reverse_symbol);
+        //reverse_symbol.setOnClickListener(this);
         declareColors();
 
         distance_vector = (VectorMasterView) findViewById(R.id.distance_vector);
