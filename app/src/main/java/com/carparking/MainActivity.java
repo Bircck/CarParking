@@ -34,16 +34,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     VectorMasterView distance_vector;
 
     // find the correct path using name
-    PathModel distance1;
-    PathModel distance2;
-    PathModel distance3;
-    PathModel distance4;
-    int mode = 0;
 
     //Thread animationThread;
 
     // initialize valueAnimator and pass start and end color values
-    ValueAnimator valueAnimator;
     Resources res;
 
     int color_parked;
@@ -60,17 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            CanBusLogic.startBT(handler);
-        } catch (Exception e) {
 
-            for (int i=0; i < 15; i++)
-            {
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-            e.printStackTrace();
-            return;
-        }
 
         //sound
         quackMediaPlayer = MediaPlayer.create(this, R.raw.quack);
@@ -83,26 +67,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         declareColors();
 
         distance_vector = (VectorMasterView) findViewById(R.id.distance_vector);
-        distance_vector.setOnClickListener(this);
 
         // find the correct path using name
-        distance1 = distance_vector.getPathModelByName("distance1");
-        distance2 = distance_vector.getPathModelByName("distance2");
-        distance3 = distance_vector.getPathModelByName("distance3");
-        distance4 = distance_vector.getPathModelByName("distance4");
 
         //other stuff
         //car_statistics_screen_button = findViewById(R.id.car_statistics_screen_button);
         //car_statistics_screen_button.setOnClickListener(this);
-        StartCarCommunication();
+
+
+        try {
+            DistanceLogic.startBT(handler, distance_vector);
+        } catch (Exception e) {
+
+            for (int i=0; i < 15; i++)
+            {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            e.printStackTrace();
+        }
+        try {
+            CanBusLogic.startBT(handler);
+            StartCarCommunication();
+        } catch (Exception e) {
+
+            for (int i=0; i < 15; i++)
+            {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            e.printStackTrace();
+        }
     }
 
     public void onClick(View v) {
-        if (v == distance_vector) {
-            distanceVectorUpdater();
-//            quackMediaPlayer.setLooping(true);
-//            quackMediaPlayer.start();
-        }
         if (v == parking_symbol){
             updateRevParkSymbols(v);
             //quackMediaPlayer.pause();
@@ -146,79 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void distanceVectorUpdater(){
-        mode++;
-        if(mode == 1){
-            //repeating animation
-            valueAnimator = ValueAnimator.ofObject(new ArgbEvaluator(), Color.parseColor("#111111"), Color.parseColor("#555555"));
-            valueAnimator.setDuration(2000);
-            valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
-            valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
-            System.out.println(valueAnimator.getRepeatCount());
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    // set fill color and update view
-                    distance1.setFillColor((Integer) valueAnimator.getAnimatedValue());
-                    distance2.setFillColor((Integer) valueAnimator.getAnimatedValue());
-                    distance3.setFillColor((Integer) valueAnimator.getAnimatedValue());
-                    distance4.setFillColor((Integer) valueAnimator.getAnimatedValue());
-
-                    distance_vector.update();
-                }
-            });
-            valueAnimator.start();
-        }
-        else if(mode == 2){
-            valueAnimator.cancel();
-
-            // set the fill color (if fill color is not set or is TRANSPARENT, then no fill is drawn)
-            distance1.setFillColor(Color.parseColor("#555555"));
-            distance2.setFillColor(Color.parseColor("#555555"));
-            distance3.setFillColor(Color.parseColor("#555555"));
-            distance4.setFillColor(Color.parseColor("#555555"));
-
-            distance_vector.update();
-        }
-        else if(mode == 3){
-            // set the fill color (if fill color is not set or is TRANSPARENT, then no fill is drawn)
-            distance4.setFillAlpha(0);
-            distance3.setFillColor(Color.parseColor("#4f3d3d"));
-            distance2.setFillColor(Color.parseColor("#4f3d3d"));
-            distance1.setFillColor(Color.parseColor("#4f3d3d"));
-            distance_vector.update();
-        }
-        else if(mode == 4){
-            // set the fill color (if fill color is not set or is TRANSPARENT, then no fill is drawn)
-            distance4.setFillAlpha(0);
-            distance3.setFillAlpha(0);
-            distance2.setFillColor(Color.parseColor("#6e2424"));
-            distance1.setFillColor(Color.parseColor("#6e2424"));
-            distance_vector.update();
-        }
-        else if(mode == 5){
-            // set the fill color (if fill color is not set or is TRANSPARENT, then no fill is drawn)
-            distance4.setFillAlpha(0);
-            distance3.setFillAlpha(0);
-            distance2.setFillAlpha(0);
-            distance1.setFillColor(Color.parseColor("#961515"));
-            distance_vector.update();
-        }
-
-
-        else if(mode == 6){
-            // set the fill color (if fill color is not set or is TRANSPARENT, then no fill is drawn)
-            distance4.setFillColor(Color.parseColor("#555555"));
-            distance3.setFillColor(Color.parseColor("#555555"));
-            distance2.setFillColor(Color.parseColor("#555555"));
-            distance1.setFillColor(Color.parseColor("#555555"));
-            distance4.setFillAlpha(1);
-            distance3.setFillAlpha(1);
-            distance2.setFillAlpha(1);
-            distance_vector.update();
-            mode = 0;
-        }
-    }
 
     Thread canbusThread;
     VectorMasterView vector;
