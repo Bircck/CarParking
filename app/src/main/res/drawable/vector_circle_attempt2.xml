@@ -30,8 +30,6 @@
             android:strokeLineCap="round"
             android:trimPathStart="0.1"
             android:trimPathEnd="0.1"
-            android:fillAlpha="1"
-            android:fillColor="#FFFFFF"
             />
     </group>
 
