@@ -22,7 +22,7 @@ import java.util.UUID;
 public class CanBusLogic {
     private static BluetoothAdapter mBluetoothAdapter;
     private static BluetoothSocket mmSocket;
-    private static BluetoothDevice mmDevice;
+    private static BluetoothDevice mmDevice = null;
     private static OutputStream mmOutputStream;
     private static InputStream mmInputStream;
     private static Thread readThread, writeThread;
@@ -64,10 +64,21 @@ public class CanBusLogic {
                 }
             }
         }
+        if(mmDevice == null){
+            throw new Exception("Kunne ikke finde den korrekte forbindelse til OBDLink MX!");
+        }
 
         UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //Standard SerialPortService ID
         mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
-        mmSocket.connect();
+        if(mmSocket.isConnected()){
+            mmSocket.close();
+        }
+        try{
+            mmSocket.connect();
+        }
+        catch(Exception e){
+            throw new Exception("Kunne ikke forbinde til bluetooth enhed " + mmDevice.getName());
+        }
         mmOutputStream = mmSocket.getOutputStream();
         mmInputStream = mmSocket.getInputStream();
 

@@ -63,9 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             CanBusLogic.startBT(handler);
         } catch (Exception e) {
+
             for (int i=0; i < 15; i++)
             {
-                Toast.makeText(this, "BLUETOOTH VIRKER IKKE :(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
             e.printStackTrace();
             return;
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         color_reverse = getResources().getColor(R.color.white);
         color_notActive = getResources().getColor(R.color.main_lightgrey);
         parking_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
-        reverse_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
+        //reverse_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
     }
 
     public void updateRevParkSymbols(View clicked_symbol){
