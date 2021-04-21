@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //car_statistics_screen_button.setOnClickListener(this);
 
 
+
+
         try {
             DistanceLogic.startBT(handler, distance_vector);
         } catch (Exception e) {
@@ -98,48 +100,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void onClick(View v) {
-        if (v == parking_symbol){
-            updateRevParkSymbols(v);
-            //quackMediaPlayer.pause();
-        }
-        if (v == reverse_symbol){
-            updateRevParkSymbols(v);
-        }
-    }
+
 
     public void declareColors(){
         //colors on buttons
         final Context context=this;
         res = context.getResources();
-        color_parked = res.getColor(R.color.red_900);
-        color_reverse = getResources().getColor(R.color.white);
-        color_notActive = getResources().getColor(R.color.main_lightgrey);
+        color_parked = res.getColor(R.color.red_900,null);
+        color_reverse = getResources().getColor(R.color.white,null);
+        color_notActive = getResources().getColor(R.color.main_lightgrey,null);
         parking_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
         //reverse_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
     }
 
-    public void updateRevParkSymbols(View clicked_symbol){
-        //parked
-        if(clicked_symbol == parking_symbol){
-            if(parked_active == 0){
-                parked_active++;
-                parking_symbol.setColorFilter(color_parked, PorterDuff.Mode.SRC_ATOP);
-            } else if(parked_active >= 1){
-                parked_active = 0;
-                parking_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
-            }
-        }
-        //reverse
-        if(clicked_symbol == reverse_symbol){
-            if(reverse_active == 0){
-                reverse_active++;
-                reverse_symbol.setColorFilter(color_reverse, PorterDuff.Mode.SRC_ATOP);
-            } else if(reverse_active >= 1){
-                reverse_active = 0;
-                reverse_symbol.setColorFilter(color_notActive, PorterDuff.Mode.SRC_ATOP);
-            }
-        }
+    public void onClick(View v) {
+
     }
 
 
@@ -147,20 +122,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     VectorMasterView vector;
     TextView information_battery, information_brake, information_gear;
     private void StartCarCommunication(){
-        vector = findViewById(R.id.vectorBattery);
+
+        vector = findViewById(R.id.vectorBattery_line);
         PathModel innerline = vector.getPathModelByName("innerline");
         PathModel outline = vector.getPathModelByName("outline");
         innerline.setStrokeColor(Color.RED);
         outline.setStrokeColor(Color.GREEN);
+
         vector.update();
 
         information_battery = findViewById(R.id.information_battery);
-        information_brake = findViewById(R.id.information_brake);
+        //information_brake = findViewById(R.id.information_brake);
         information_gear = findViewById(R.id.information_gear);
 
         CanBusLogic.addTextview("battery", information_battery);
         CanBusLogic.addTextview("brake", information_brake);
         CanBusLogic.addTextview("gear", information_gear);
+        CanBusLogic.addImageview("brake", parking_symbol);
+        CanBusLogic.addColors("red", color_parked);
+        CanBusLogic.addColors("grey", color_notActive);
         CanBusLogic.vector = vector;
 
         canbusThread = new Thread(() -> {

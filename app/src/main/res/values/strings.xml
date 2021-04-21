@@ -4,4 +4,7 @@
     <string name="parking_symbol_description">parking symbol</string>
     <string name="reverse_symbol_description">reverse symbol</string>
     <string name="car_image_description">car image</string>
+    <string name="temp_battery_value">unknown</string>
+    <string name="temp_gear_information">R</string>
+    <string name="gear_bottom_text">gear</string>
 </resources>

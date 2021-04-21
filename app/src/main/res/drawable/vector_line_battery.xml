@@ -1,21 +1,21 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="200dp"
-    android:height="200dp"
+    android:height="12dp"
     android:viewportWidth="200"
-    android:viewportHeight="200"
+    android:viewportHeight="12"
     android:alpha="1">
 
     <group>
         <path
             android:name="innerline"
             android:pathData="
-            M0,100 L200,100
+            M10,6 L190,6
             "
-            android:strokeWidth="5"
+            android:strokeWidth="10"
             android:strokeAlpha="1"
             android:strokeLineCap="round"
-            android:trimPathStart="0.1"
-            android:trimPathEnd="0.9"
+            android:trimPathStart="0"
+            android:trimPathEnd="1"
 
             android:strokeColor="#FFFFFF"
             />
@@ -23,17 +23,17 @@
         <path
             android:name="outline"
             android:pathData="
-            M0,100 L200,100
+            M10,6 L190,6
             "
-            android:strokeWidth="7"
+            android:strokeWidth="12"
             android:strokeAlpha="1"
             android:strokeLineCap="round"
-            android:trimPathStart="0.1"
-            android:trimPathEnd="0.2"
+            android:trimPathStart="0"
+            android:trimPathEnd="1"
             android:fillAlpha="1"
             android:fillColor="#AAAAAA"
 
-            android:strokeColor="#FF0000"
+            android:strokeColor="#00FF00"
             />
     </group>
 

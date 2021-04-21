@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main_constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,6 +49,55 @@
         android:contentDescription="@string/reverse_symbol_description" />
     -->
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <com.sdsmdg.harjot.vectormaster.VectorMasterView
+            android:id="@+id/vectorBattery_line"
+            android:layout_width="220dp"
+            android:layout_height="15dp"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:vector_src="@drawable/vector_line_battery" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/information_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/temp_battery_value"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/information_battery_symbol"
+                android:rotation="90"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_baseline_battery_charging_full_24"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gear_container"
         android:layout_width="40dp"
@@ -63,13 +113,13 @@
         >
 
         <TextView
-            android:id="@+id/gear_currentgear_text"
+            android:id="@+id/information_gear"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/white"
-            android:text="R"
+            android:text="@string/temp_gear_information"
             android:textSize="32sp"
             android:gravity="center">
         </TextView>
@@ -79,9 +129,9 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gear_currentgear_text"
+            app:layout_constraintTop_toBottomOf="@id/information_gear"
             android:textColor="@color/white"
-            android:text="gear"
+            android:text="@string/gear_bottom_text"
             android:textSize="12sp"
             android:gravity="center"
             >
@@ -91,109 +141,37 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/testing_image_car"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            app:srcCompat="@drawable/car_grey_simple"
-            android:contentDescription="@string/car_image_description" />
-
-        <!--  android:rotation=""-->
-
-        <com.sdsmdg.harjot.vectormaster.VectorMasterView
-            android:id="@+id/distance_vector"
-            android:rotation="180"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            app:vector_src="@drawable/vector_bigone_2"
-            android:layout_below="@id/testing_image_car"/>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/distance_vector"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:paddingTop="16dp"
-            tools:ignore="MissingConstraints">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/testing_image_car"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight=".20"
+                android:contentDescription="@string/car_image_description"
+                app:srcCompat="@drawable/car_grey_simple" />
+
+            <!--  android:rotation=""-->
+
+            <com.sdsmdg.harjot.vectormaster.VectorMasterView
+                android:id="@+id/distance_vector"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
-
-                <com.sdsmdg.harjot.vectormaster.VectorMasterView
-                    android:id="@+id/vectorBattery"
-                    android:layout_width="150dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_height="150dp"
-                    app:vector_src="@drawable/vector_circle_attempt2" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:textColor="@color/white"
-                    android:layout_height="match_parent"
-                    android:id="@+id/information_battery"
-                    android:text="0%"
-                    android:gravity="center"
-                    android:textSize="24sp"
-                    android:layout_alignTop="@id/vectorBattery"
-                    android:layout_alignBottom="@id/vectorBattery"
-                    android:layout_alignStart="@id/vectorBattery"
-                    android:layout_alignEnd="@id/vectorBattery" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <TextView
-                    android:id="@+id/information_brake_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Er håndbremsen trukket? "
-                    android:textColor="@color/white" />
-                <TextView
-                    android:id="@+id/information_brake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <TextView
-                    android:id="@+id/information_gear_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Hvad står gearet i? "
-                    android:textColor="@color/white" />
-                <TextView
-                    android:id="@+id/information_gear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
+                android:layout_height="150dp"
+                android:layout_weight=".90"
+                android:rotation="180"
+                app:vector_src="@drawable/vector_bigone_2" />
 
         </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

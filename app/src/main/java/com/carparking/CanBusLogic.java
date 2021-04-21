@@ -4,8 +4,13 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.graphics.PorterDuff;
+import android.media.Image;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sdsmdg.harjot.vectormaster.VectorMasterView;
@@ -38,10 +43,21 @@ public class CanBusLogic {
 
     public static VectorMasterView vector;
 
+    static void colors(){}
+
+    static HashMap<String, Integer> colors = new HashMap<>();
+    static void addColors(String name, int colors){
+        CanBusLogic.colors.put(name, colors);
+    }
 
     static HashMap<String, TextView> textViews = new HashMap<>();
     static void addTextview(String name, TextView textView){
         CanBusLogic.textViews.put(name, textView);
+    }
+
+    static HashMap<String, ImageView> imageViews = new HashMap<>();
+    static void addImageview(String name, ImageView imageView){
+        CanBusLogic.imageViews.put(name, imageView);
     }
 
     static void startBT(Handler handler) throws Exception {
@@ -138,13 +154,15 @@ public class CanBusLogic {
                                         }
                                         if (finalData.length() > 10 && type == 346) {
                                             int brakeValue = Integer.parseInt(finalData.substring(11, 12), 16);
-                                            CanBusLogic.textViews.get("brake").setText(brakeValue == 2 ? "Ja" : "Nej");
+
+                                            CanBusLogic.imageViews.get("brake").setColorFilter(CanBusLogic.colors.get(brakeValue == 2 ? "red" : "grey"), PorterDuff.Mode.SRC_ATOP);
                                         }
                                         if (finalData.length() > 10 && type == 374) {
                                             int battery = Integer.parseInt(finalData.substring(5, 7), 16);
                                             battery = Math.round((((float)battery)/210)*100);
                                             CanBusLogic.textViews.get("battery").setText(battery + "%");
-                                            float trimPathEnd = (((battery*0.8f)/100)+0.1f);
+                                            float trimPathEnd = battery/100f;
+                                            //float trimPathEnd = (((battery*0.8f)/100)+0.1f);
                                             PathModel outline = vector.getPathModelByName("outline");
                                             outline.setTrimPathEnd(trimPathEnd);
                                             vector.update();
