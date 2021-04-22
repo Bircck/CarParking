@@ -33,7 +33,7 @@
             android:fillAlpha="1"
             android:fillColor="#AAAAAA"
 
-            android:strokeColor="#00FF00"
+            android:strokeColor="#3ACA3A"
             />
     </group>
 

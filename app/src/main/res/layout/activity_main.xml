@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"
         >
 
         <com.sdsmdg.harjot.vectormaster.VectorMasterView
@@ -155,7 +156,7 @@
                 android:id="@+id/testing_image_car"
                 android:layout_width="150dp"
                 android:layout_height="200dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_weight=".20"
                 android:contentDescription="@string/car_image_description"
                 app:srcCompat="@drawable/car_grey_simple" />

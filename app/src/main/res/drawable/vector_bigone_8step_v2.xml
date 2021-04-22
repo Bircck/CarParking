@@ -1,0 +1,174 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1000dp"
+    android:height="1000dp"
+    android:viewportWidth="1000"
+    android:viewportHeight="1000"
+    android:alpha="1">
+
+    <group
+        android:translateY="-40">
+
+        <!--testing -->
+
+        <path
+            android:name="distance1"
+            android:fillAlpha="1"
+            android:fillColor="#440000"
+            android:fillType="evenOdd"
+            android:pathData="
+                M300,1000
+                L275,900
+                C275,900 500,680 725,900
+                L700,1000
+                C700,1000 500,820 300,1000"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+        <path
+            android:name="distance2"
+            android:fillAlpha="1"
+            android:fillColor="#111111"
+            android:fillType="evenOdd"
+            android:pathData="
+                M275,900
+                L250,800
+                C250,800 500,580 750,800
+                L725,900
+                C725,900 500,700 275,900"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+
+        <path
+            android:name="distance3"
+            android:fillAlpha="1"
+            android:fillColor="#0000ff"
+            android:fillType="evenOdd"
+            android:pathData="
+            M250,800
+            L225,700
+            C225,700 500,480 775,700
+            L750,800
+            C750,800 500,600 250,800"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+        <path
+            android:name="distance4"
+            android:fillAlpha="1"
+            android:fillColor="#00ff00"
+            android:fillType="evenOdd"
+            android:pathData="
+            M225,700
+            L200,600
+            C200,600 500,380 800,600
+            L775,700
+            C775,700 500,500 225,700"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+        <path
+            android:name="distance5"
+            android:fillAlpha="1"
+            android:fillColor="#333333"
+            android:fillType="evenOdd"
+            android:pathData="
+                M200,600
+                L175,500
+                C175,500 500,280 825,500
+                L800,600
+                C800,600 500,400 200,600"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+
+        <path
+            android:name="distance6"
+            android:fillAlpha="1"
+            android:fillColor="#ffff00"
+            android:fillType="evenOdd"
+            android:pathData="
+                M175,500
+                L150,400
+                C150,400 500,180 850,400
+                L825,500
+                C825,500 500,300 175,500"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+        <path
+            android:name="distance7"
+            android:fillAlpha="1"
+            android:fillColor="#444444"
+            android:fillType="evenOdd"
+            android:pathData="M150,400
+            M150,400
+            L125,300
+            C125,300 500,90 875,300
+            L850,400
+            C850,400 500,200 150,400"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+
+        <path
+            android:name="distance8"
+            android:fillAlpha="1"
+            android:fillColor="#00ffff"
+            android:fillType="evenOdd"
+            android:pathData="
+            M125,300
+            L100,200
+            C100,200 500,-50 900,200
+            L875,300
+            C875,300 500,110 125,300"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+
+        <!--
+
+        <path
+            android:name="distance4"
+            android:fillAlpha="1"
+            android:fillColor="#444444"
+            android:fillType="evenOdd"
+            android:pathData="M150,400 L100,200 C100,200 500,-100 900,200 L850,400 C850,400 500,300 150,400"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+            -->
+    </group>
+
+
+
+</vector>
+
+    <!--
+    android:pathData="M42.262,0L0,38.653L74.489,151.994L148.977,38.653L106.723,0M46.568,11.11L21.554,33.998L99.007,33.998L99.007,11.11L46.568,11.11ZM110.125,18.174L110.125,33.998L127.416,33.998L110.125,18.174ZM80.048,45.116L80.048,123.296L131.426,45.116L80.048,45.116ZM17.551,45.116L33.976,70.101L68.93,70.101L68.93,45.116L17.551,45.116ZM41.284,81.219L68.93,123.296L68.93,81.219L41.284,81.219Z"
+    android:pathData="M0,75 L0,50 C0,50 75,0 150,50 L150,75 C150,75 75,25 0,75"
+
+    android:pathData="M75,200 C75,200 -100,100 100,10 C100,10  300,100 125,200"
+    -->
+
+    <!--
+    M move to
+    L line to
+    C curve to
+    A arc to
+    Z close
+    -->
+
+    <!--
+        android:fillAlpha="1"
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        -->
