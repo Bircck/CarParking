@@ -169,7 +169,7 @@
                 android:layout_height="150dp"
                 android:layout_weight=".90"
                 android:rotation="180"
-                app:vector_src="@drawable/vector_bigone_2" />
+                app:vector_src="@drawable/vector_bigone_8step_v2" />
 
         </LinearLayout>
 

@@ -11,9 +11,24 @@
         <!--testing -->
 
         <path
+            android:name="background"
+            android:fillAlpha="1"
+            android:fillColor="#444444"
+            android:fillType="evenOdd"
+            android:pathData="
+                M300,1000
+                L100,200
+                C100,200 500,-50 900,200
+                L700,1000
+                C700,1000 500,820 300,1000"
+            android:strokeWidth="0"
+            android:strokeAlpha="0"
+            android:strokeColor="#FFFFFF"/>
+
+        <path
             android:name="distance1"
             android:fillAlpha="1"
-            android:fillColor="#440000"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
                 M300,1000
@@ -28,7 +43,7 @@
         <path
             android:name="distance2"
             android:fillAlpha="1"
-            android:fillColor="#111111"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
                 M275,900
@@ -44,7 +59,7 @@
         <path
             android:name="distance3"
             android:fillAlpha="1"
-            android:fillColor="#0000ff"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
             M250,800
@@ -59,7 +74,7 @@
         <path
             android:name="distance4"
             android:fillAlpha="1"
-            android:fillColor="#00ff00"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
             M225,700
@@ -74,7 +89,7 @@
         <path
             android:name="distance5"
             android:fillAlpha="1"
-            android:fillColor="#333333"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
                 M200,600
@@ -90,7 +105,7 @@
         <path
             android:name="distance6"
             android:fillAlpha="1"
-            android:fillColor="#ffff00"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
                 M175,500
@@ -121,7 +136,7 @@
         <path
             android:name="distance8"
             android:fillAlpha="1"
-            android:fillColor="#00ffff"
+            android:fillColor="#444444"
             android:fillType="evenOdd"
             android:pathData="
             M125,300
