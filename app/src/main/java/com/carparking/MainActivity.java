@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sdsmdg.harjot.vectormaster.VectorMasterView;
 import com.sdsmdg.harjot.vectormaster.models.PathModel;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,9 +58,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //keep screen on
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        //sound
-        quackMediaPlayer = MediaPlayer.create(this, R.raw.quack);
+//        //sound
+//        quackMediaPlayer = MediaPlayer.create(this, R.raw.beeb);
+//        float speed = 1.0f;
+//        quackMediaPlayer.setPlaybackParams(quackMediaPlayer.getPlaybackParams().setSpeed(speed));
+//        quackMediaPlayer.setLooping(true);
+//        quackMediaPlayer.start();
+
 
         //park/revers symbols
         parking_symbol = findViewById(R.id.parking_symbol);
@@ -100,7 +110,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /*
+    //start og stop lyd osv
+    @Override
+    protected void onStop()
+    {
+        if (quackMediaPlayer != null)
+            quackMediaPlayer.stop();
+        super.onStop();
+    }
 
+    @Override
+    protected void onResume() {
+        if (quackMediaPlayer == null)
+            quackMediaPlayer.start();
+        super.onResume();
+    }
+     */
 
     public void declareColors(){
         //colors on buttons

@@ -166,6 +166,9 @@ public class DistanceLogic {
         readThread.start();
     }
 
+    static void distanceSoundPlay(){
+
+    }
 
     static void distanceVectorUpdater(){
         //change alpha
@@ -235,97 +238,6 @@ public class DistanceLogic {
         }
         distance_vector.update();
     }
-
-    /*
-    private static PathModel distance1;
-    private static PathModel distance2;
-    private static PathModel distance3;
-    private static PathModel distance4;
-    private static PathModel distance5;
-    private static PathModel distance6;
-    private static PathModel distance7;
-    private static PathModel distance8;
-	private static PathModel distance9;
-    private static PathModel distance10;
-    private static PathModel distance11;
-    private static PathModel distance12;
-	private static PathModel distance13;
-    private static PathModel distance14;
-    private static PathModel distance15;
-    private static PathModel distance16;
-
-	distance1 = distance_vector.getPathModelByName("distance1");
-    distance2 = distance_vector.getPathModelByName("distance2");
-    distance3 = distance_vector.getPathModelByName("distance3");
-    distance4 = distance_vector.getPathModelByName("distance4");
-    distance5 = distance_vector.getPathModelByName("distance5");
-    distance6 = distance_vector.getPathModelByName("distance6");
-    distance7 = distance_vector.getPathModelByName("distance7");
-    distance8 = distance_vector.getPathModelByName("distance8");
-    distance9 = distance_vector.getPathModelByName("distance9");
-    distance10 = distance_vector.getPathModelByName("distance10");
-    distance11 = distance_vector.getPathModelByName("distance11");
-    distance12 = distance_vector.getPathModelByName("distance12");
-    distance13 = distance_vector.getPathModelByName("distance13");
-    distance14 = distance_vector.getPathModelByName("distance14");
-    distance15 = distance_vector.getPathModelByName("distance15");
-    distance16 = distance_vector.getPathModelByName("distance16");
-
-    static void distanceVectorUpdater(){
-    	//change alpha
-        distance1.setFillAlpha(1);
-        distance2.setFillAlpha(1);
-        distance3.setFillAlpha(1);
-        distance4.setFillAlpha(1);
-        distance5.setFillAlpha(1);
-        distance6.setFillAlpha(1);
-        distance7.setFillAlpha(1);
-        distance8.setFillAlpha(1);
-        distance9.setFillAlpha(1);
-        distance10.setFillAlpha(1);
-        distance11.setFillAlpha(1);
-        distance12.setFillAlpha(1);
-        distance13.setFillAlpha(1);
-        distance14.setFillAlpha(1);
-        distance15.setFillAlpha(1);
-        distance16.setFillAlpha(1);
-
-        //set fill color
-        distance1.setFillColor(Color.parseColor("#ff5500"));
-        distance2.setFillColor(Color.parseColor("#d4ff00"));
-        distance3.setFillColor(Color.parseColor("#91ff00"));
-        distance4.setFillColor(Color.parseColor("#40ff00"));
-        distance5.setFillColor(Color.parseColor("#ff5500"));
-        distance6.setFillColor(Color.parseColor("#d4ff00"));
-        distance7.setFillColor(Color.parseColor("#91ff00"));
-        distance8.setFillColor(Color.parseColor("#40ff00"));
-        distance9.setFillColor(Color.parseColor("#ff5500"));
-        distance10.setFillColor(Color.parseColor("#d4ff00"));
-        distance11.setFillColor(Color.parseColor("#91ff00"));
-        distance12.setFillColor(Color.parseColor("#40ff00"));
-        distance13.setFillColor(Color.parseColor("#ff5500"));
-        distance14.setFillColor(Color.parseColor("#d4ff00"));
-        distance15.setFillColor(Color.parseColor("#91ff00"));
-        distance16.setFillColor(Color.parseColor("#40ff00"));
-
-        if(mode == 1){
-            distance_vector.update();
-        }
-        else if(mode == 2){
-            distance4.setFillAlpha(0);
-        }
-        else if(mode == 3){
-            distance4.setFillAlpha(0);
-            distance3.setFillAlpha(0);
-        }
-        else if(mode == 4){
-            distance4.setFillAlpha(0);
-            distance3.setFillAlpha(0);
-            distance2.setFillAlpha(0);
-        }
-        distance_vector.update();
-    }
-     */
 
 
 }
