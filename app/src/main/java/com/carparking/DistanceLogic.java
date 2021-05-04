@@ -125,22 +125,22 @@ public class DistanceLogic {
 
                         try{
                             int ndata = Integer.parseInt(formatted_data);
-                            if(ndata < 70){
+                            if(ndata < 85){
                                 mode = 8;
                                 distanceVectorUpdater();
-                            }else if(ndata < 80){
+                            }else if(ndata < 95){
                                 mode = 7;
                                 distanceVectorUpdater();
-                            }else if(ndata < 90) {
+                            }else if(ndata < 105) {
                                 mode = 6;
                                 distanceVectorUpdater();
-                            }else if(ndata < 100) {
+                            }else if(ndata < 115) {
                                 mode = 5;
                                 distanceVectorUpdater();
-                            }else if(ndata < 120){
+                            }else if(ndata < 135){
                                 mode = 4;
                                 distanceVectorUpdater();
-                            }else if(ndata < 150){
+                            }else if(ndata < 160){
                                 mode = 3;
                                 distanceVectorUpdater();
                             }else if(ndata < 200){
